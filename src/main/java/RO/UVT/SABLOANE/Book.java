@@ -1,6 +1,7 @@
 package RO.UVT.SABLOANE;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class Book {
@@ -20,6 +21,6 @@ public class Book {
     }
 
     public Collection<Author> getAuthors() {
-        return authors;
+        return Collections.unmodifiableList(authors);
     }
 }

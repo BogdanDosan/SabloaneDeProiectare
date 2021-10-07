@@ -9,6 +9,8 @@ public class Main {
         discoTitanic.addAuthor(rpGheo);
 
         Collection<Author> a = discoTitanic.getAuthors();
+        a.add(new Author("Mircea Cartarescu"));
+        System.out.println("dummy");
 
 //        int indexChapterOne = discoTitanic.createChapter("Capitolul 1");
 //        Chapter chp1 = discoTitanic.getChapter(indexChapterOne);
