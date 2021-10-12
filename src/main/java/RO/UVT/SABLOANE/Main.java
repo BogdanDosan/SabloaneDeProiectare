@@ -8,21 +8,21 @@ public class Main {
         Author rpGheo = new Author("Radu Pavel Gheo");
         discoTitanic.addAuthor(rpGheo);
 
-        Collection<Author> a = discoTitanic.getAuthors();
-        a.add(new Author("Mircea Cartarescu"));
-        System.out.println("dummy");
+        int indexChapterOne = discoTitanic.createChapter("Capitolul 1");
+        Chapter chp1 = discoTitanic.getChapter(indexChapterOne);
 
-//        int indexChapterOne = discoTitanic.createChapter("Capitolul 1");
-//        Chapter chp1 = discoTitanic.getChapter(indexChapterOne);
-//        int indexSubChapterOneOne = chp1.createSubChapter("Subcapitolul 1.1");
-//        SubChapter scOneOne = chp1.getSubChapter(indexSubChapterOneOne);
-//        scOneOne.createNewParagraph("Paragraph 1");
-//        scOneOne.createNewParagraph("Paragraph 2");
-//        scOneOne.createNewParagraph("Paragraph 3");
-//        scOneOne.createNewImage("Image 1");
-//        scOneOne.createNewParagraph("Paragraph 4");
-//        scOneOne.createNewTable("Table 1");
-//        scOneOne.createNewParagraph("Paragraph 5");
-//        scOneOne.print();
+
+
+        int indexSubChapterOneOne = chp1.createSubChapter("Subcapitolul 1.1");
+        SubChapter scOneOne = chp1.getSubChapter(indexSubChapterOneOne);
+
+        scOneOne.createNewParagraph("Paragraph 1");
+        scOneOne.createNewParagraph("Paragraph 2");
+        scOneOne.createNewParagraph("Paragraph 3");
+        scOneOne.createNewImage("Image 1");
+        scOneOne.createNewParagraph("Paragraph 4");
+        scOneOne.createNewTable("Table 1");
+        scOneOne.createNewParagraph("Paragraph 5");
+        scOneOne.print();
     }
 }
