@@ -1,10 +1,11 @@
 package RO.UVT.SABLOANE;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Chapter {
     private String name;
-    private ArrayList<SubChapter> subchapters = new ArrayList<SubChapter>();
+    private List<SubChapter> subchapters = new ArrayList<SubChapter>();
 
     public Chapter(String name) {
         this.name = name;

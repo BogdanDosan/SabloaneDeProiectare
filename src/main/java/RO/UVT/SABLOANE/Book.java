@@ -1,21 +1,20 @@
 package RO.UVT.SABLOANE;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 
 public class Book {
     private String title;
-    private LinkedList<Author> authors = new LinkedList<Author>();
-    private ArrayList<Chapter> chapters = new ArrayList<Chapter>();
+    private List<Author> authors = new LinkedList<Author>();
+    private List<Chapter> chapters = new ArrayList<Chapter>();
 
     public Book(String title) {
         this.title = title;
     }
 
     public void addAuthor(Author author){
-        authors.addLast(author);
+        authors.add(author);
     }
 
     public int createChapter (String chapterName) {
@@ -23,8 +22,8 @@ public class Book {
         return chapters.size()-1;
     }
 
-    public LinkedList<Author> getAuthors() {
-        return authors;
+    public List getAuthors() {
+        return Collections.unmodifiableList(authors);
     }
 
     public Chapter getChapter(int index) {
@@ -44,8 +43,6 @@ public class Book {
         for(Chapter i : chapters) {
             i.print();
         }
-
-
 
 
     }
