@@ -1,50 +1,64 @@
 package RO.UVT.SABLOANE;
 
 
-import java.util.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Book {
-    private String title;
-    private List<Author> authors = new LinkedList<Author>();
-    private List<Chapter> chapters = new ArrayList<Chapter>();
+public class Book extends Element{
+    private final Collection<Author> authors = new LinkedList<>();
+    private final List<Chapter> chapters = new ArrayList<>();
+    private final List<Element> elements = new ArrayList<>();
+    private final String title;
+    private final TableOfContents contents;
 
-    public Book(String title) {
+    public Book(String title){
         this.title = title;
+        this.contents = new TableOfContents(chapters);
     }
 
     public void addAuthor(Author author){
         authors.add(author);
     }
 
-    public int createChapter (String chapterName) {
-        chapters.add(new Chapter(chapterName));
-        return chapters.size()-1;
+    public void removeAuthor(Author author){
+        authors.remove(author);
     }
 
-    public List getAuthors() {
-        return Collections.unmodifiableList(authors);
+    public Collection<Author> getAuthors(){
+        return authors;
     }
 
-    public Chapter getChapter(int index) {
+    public void addContent(Element element){
+        elements.add(element);
+    }
+
+    public int createChapter(String cTitle){
+        Chapter chapter = new Chapter(cTitle);
+        chapters.add(chapter);
+        int index = chapters.indexOf(chapter);
+        contents.addContent(index, chapter);
+        return index;
+    }
+
+    public Chapter getChapter(int index){
         return chapters.get(index);
     }
 
     public void print(){
-        System.out.println("Book title: " + this.title);
-        System.out.println("Authors: ");
+        System.out.println(this);
 
-        for(Author i : authors) {
-            i.print();
+        for(Element element: elements){
+            element.print();
         }
-
-        System.out.println("Chapters: ");
-
-        for(Chapter i : chapters) {
-            i.print();
-        }
-
-
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title = " + title + '\n' +
+                "authors=" + authors + '\n';
+    }
 }

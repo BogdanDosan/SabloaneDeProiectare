@@ -4,32 +4,38 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SubChapter {
-    private String name;
-   private Collection<Element> elements= new ArrayList<Element>();
+    private final String name;
+    private final Collection<Element> elements = new ArrayList<>();
 
-    public SubChapter(String name) {
+    public SubChapter(String name){
         this.name = name;
     }
 
-    public void createNewParagraph(String text) {
-        elements.add(new Paragraph(text));
+    public void createNewParagraph(String pTitle){
+        createNewElement(new Paragraph(pTitle));
     }
 
-    public void createNewImage(String imageName) {
-        elements.add(new Image(imageName));
+    public void createNewImage(String iName){
+        createNewElement(new Image(iName));
     }
 
-    public void createNewTable(String title) {
-        elements.add(new Table(title));
+    public void createNewTable(String tTitle){
+        createNewElement(new Table(tTitle));
     }
 
-    public void print() {
-        System.out.println("Subchapter name: " + this.name);
+    public void createNewElement(Element element){
+        elements.add(element);
+    }
 
-        System.out.println("Elements:");
-        for(Element i : elements) {
-            i.print();
-        }
+    public void print(){
+        System.out.println(this);
+    }
 
+    @Override
+    public String toString() {
+        return "SubChapter{" +
+                "name='" + name + '\'' +
+                ", elements=" + elements +
+                '}';
     }
 }

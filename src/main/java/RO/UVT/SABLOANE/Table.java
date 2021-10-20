@@ -1,13 +1,20 @@
 package RO.UVT.SABLOANE;
 
-public class Table implements Element{
-    private String title;
+public class Table extends Element {
+    private final String title;
 
-    public Table (String title) {
+    public Table(String title){
         this.title = title;
     }
 
-    public void print() {
-        System.out.println(this.title);
+    public void print(){
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "title='" + title + '\'' +
+                '}';
     }
 }
