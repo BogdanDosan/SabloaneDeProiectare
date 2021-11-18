@@ -3,25 +3,31 @@ package models;
 import services.AlignLeft;
 import services.AlignStrategy;
 
-public class Paragraph implements Element, Visitee{
-    String text;
+public class Student implements Element, Visitee{
+    String nume, email;
     AlignStrategy alignStrategy;
 
-    public Paragraph(String txt){
-        text = txt;
+    public Student(String numeStudent, String e){
+        nume = numeStudent;
+        email = e;
         alignStrategy = new AlignLeft();
     }
     @Override
     public void accept(Visitor visitor){
-        visitor.visitParagraph(this);
+        visitor.visitStudent(this);
     }
     public void setAlignStrategy(AlignStrategy as){
         alignStrategy = as;
     }
 
-    public String getText() {
-        return text;
+    public String getNume() {
+        return nume;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
     public AlignStrategy getAlignStrategy(){
         return alignStrategy;
     }

@@ -1,11 +1,8 @@
 package models;
 
 public interface Visitor {
-    void visitBook(Book b);
-    void visitSection(Section s);
-    void visitTOC(TableOfContents toc);
-    void visitParagraph(Paragraph p);
-    void visitImageProxy(ImageProxy imgPr);
-    void visitImage(Image img);
-    void visitTable(Table t);
+    void visitStudent(Student student);
+    void visitAn(An an);
+    void visitGrupa(Grupa grupa);
+    void visitSubgrupa(Subgrupa subgrupa);
 }

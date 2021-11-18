@@ -1,59 +1,40 @@
 package services;
 
 import models.*;
-import models.Image;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class RenderContentVisitor implements models.Visitor {
-    public void visitBook(Book b){
-        System.out.println("Book: " + b.getTitle());
-        System.out.println("Authors: ");
-        for (Author auth : b.getAuthors()){
-            auth.print();
-        }
-        System.out.println();
-        for (Element e : b.getElements()){
+
+    public void visitAn(An an){
+        System.out.println("An: " + an.getNumeAn());
+        for (Element e : an.getElements()){
             ((Visitee) e).accept(this);
         }
     }
-    public void visitSection(Section s){
-        System.out.println("Section: " + s.getTitle());
-        for (Element e : s.getElements()){
+    public void visitGrupa(Grupa gr){
+        System.out.println("Grupa: " + gr.getNumeGrupa();
+        for (Element e : gr.getElements()){
             ((Visitee) e).accept(this);
         }
     }
-    public void visitTOC(TableOfContents toc){
-        System.out.println("Table of Contents: " + toc.getTOC());
+
+    public void visitSubgrupa(Subgrupa sgr){
+        System.out.println("Subgrupa: " + sgr.getNumeSubgrupa());
+        for (Element e : sgr.getElements()){
+            ((Visitee) e).accept(this);
+        }
     }
-    public void visitParagraph(Paragraph p){
+
+    public void visitStudent(Student s){
         int poz = 0;
-        String text = p.getText();
-        AlignStrategy alignStrategy = p.getAlignStrategy();
-        while (poz < text.length()){
-            int mx = Math.min(text.substring(poz).length(), 20);
-            System.out.println(alignStrategy.align(text.substring(poz, poz + mx)));
+        String nume = s.getNume();
+        String email = s.getEmail();
+        AlignStrategy alignStrategy = s.getAlignStrategy();
+        while (poz < nume.length()){
+            int mx = Math.min(nume.substring(poz).length(), 20);
+            System.out.println(alignStrategy.align(nume.substring(poz, poz + mx)));
+            System.out.print(email);
             poz += mx;
         }
     }
-    public void visitImageProxy(ImageProxy imgPr){
-        ((Visitee) imgPr.loadImage()).accept(this);
-    }
-    public void visitImage(Image img){
-        BufferedImage bufferedImage = img.content().getImage();
-        if (bufferedImage != null){
-            JLabel picLabel = new JLabel(new ImageIcon(bufferedImage));
-            JPanel jPanel = new JPanel();
-            jPanel.add(picLabel);
-            JFrame f = new JFrame();
-            f.setSize(new Dimension(bufferedImage.getWidth(), bufferedImage.getHeight()));
-            f.add(jPanel);
-            f.setVisible(true);
-        }
-    }
-    public void visitTable(Table t){
-        System.out.println("Rows: " + t.getRows() + "\nColumns:" + t.getCols());
-    }
+
 }
